@@ -1,0 +1,11 @@
+{
+  "name":"metal-scraper",
+  "version":"0.0.1",
+  "description":"Scraper for MetalStorm website",
+  "main":"server.js",
+  "author":"Phil Ananin",
+  "dependencies":{
+    "request":"latest",
+    "cheerio":"latest"
+  }
+}
