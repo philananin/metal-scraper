@@ -7,7 +7,7 @@ var url = 'http://metalstorm.net/bands/band.php?band_id=13&bandname=Opeth';
 request(url, function(err, res, html) {
   if(!err) {
     var $ = cheerio.load(html);
-    var bandname = $('.page_title');
+    var bandname = $('.page_title').text().trim();
     console.log('band: ' + bandname);
   } else {
     console.log('error');
