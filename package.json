@@ -6,6 +6,7 @@
   "author":"Phil Ananin",
   "dependencies":{
     "request":"latest",
-    "cheerio":"latest"
+    "cheerio":"latest",
+    "underscore":"latest"
   }
 }
