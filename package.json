@@ -8,5 +8,9 @@
     "request":"latest",
     "cheerio":"latest",
     "underscore":"latest"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-jshint": "latest"
   }
 }
