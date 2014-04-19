@@ -1,16 +1,17 @@
 {
-  "name":"metal-scraper",
-  "version":"0.0.1",
-  "description":"Scraper for MetalStorm website",
-  "main":"server.js",
-  "author":"Phil Ananin",
-  "dependencies":{
-    "request":"latest",
-    "cheerio":"latest",
-    "underscore":"latest"
+  "name": "metal-scraper",
+  "version": "0.0.1",
+  "description": "Scraper for MetalStorm website",
+  "main": "server.js",
+  "author": "Phil Ananin",
+  "dependencies": {
+    "request": "latest",
+    "cheerio": "latest",
+    "underscore": "latest"
   },
   "devDependencies": {
     "grunt": "latest",
-    "grunt-contrib-jshint": "latest"
+    "grunt-contrib-jshint": "latest",
+    "grunt-nodemon": "^0.2.1"
   }
 }
