@@ -3,7 +3,7 @@ var events = require('events');
 var EventEmitter = events.EventEmitter;
 var cheerio = require('cheerio');
 
-var BandProcessor = function() {
+var BandListProcessor = function() {
   var self = this;
   EventEmitter.call(self);
 
@@ -29,5 +29,5 @@ var BandProcessor = function() {
   };
 };
 
-util.inherits(BandProcessor, EventEmitter);
-module.exports = BandProcessor;
+util.inherits(BandListProcessor, EventEmitter);
+module.exports = BandListProcessor;
