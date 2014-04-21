@@ -1,18 +1,24 @@
+var util = require('util');
 var BandListProcessor = require('./processors/bandlist.js');
+var BandProcessor = require('./processors/band.js');
 var Downloader = require('./utils/downloader.js');
 
-var bands = 0;
 var bandListProcessor = new BandListProcessor();
 bandListProcessor.on('parse', function(band) {
-  bands = bands + 1;
-  console.log(band.name);
-  console.log('bands: ' + bands);
+  downloader.downloadBand(band.id);
+});
+
+var bandProcessor = new BandProcessor();
+bandProcessor.on('parse', function(bandDetails) {
+  util.puts(bandDetails.name);
 });
 
 var downloader = new Downloader();
 downloader.on('bandListDownloaded', function(rawHtml) {
-  console.log('bandList downloaded');
   bandListProcessor.process(rawHtml);
+});
+downloader.on('bandDownloaded', function(rawHtml) {
+  bandProcessor.process(rawHtml);
 });
 
 var totalBandPages = 2; // todo
