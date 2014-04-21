@@ -8,15 +8,10 @@ var BandProcessor = function() {
   EventEmitter.call(self);
 
   self.process = function(rawHtml) {
-    util.puts('processing');
     var $ = cheerio.load(rawHtml);
     var content = $('#td_content');
-
     var bandsTable = content.children().first().find('table.bordercolor2');
     var bands = bandsTable.children();
-    if(!bands || bands.length === 0) {
-      console.log('no bands found');
-    }
 
     bands.each(function(index) {
       if(index === 0)
@@ -35,5 +30,4 @@ var BandProcessor = function() {
 };
 
 util.inherits(BandProcessor, EventEmitter);
-
 module.exports = BandProcessor;
