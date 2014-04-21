@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
-      all: ['*.js', 'src/**/*.js']
+      all: ['*.js', 'utils/*.js', 'processors/*.js']
     },
     nodemon: {
       dev: {
