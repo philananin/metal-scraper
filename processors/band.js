@@ -10,8 +10,15 @@ var BandProcessor = function() {
   self.process = function(rawHtml) {
     var $ = cheerio.load(rawHtml);
     var name = $('.page_title').text().trim();
+    var genreLinks = $('a[href*=\'?b_where=s.style\']');
+    var genres = [];
+    genreLinks.each(function() {
+      genres.push($(this).text().trim());
+    });
+
     self.emit('parse', {
-      name: name
+      name: name,
+      genres: genres
     });
   };
 };
