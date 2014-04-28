@@ -1,4 +1,5 @@
 var util = require('util');
+var querystring = require('querystring');
 var events = require('events');
 var EventEmitter = events.EventEmitter;
 var cheerio = require('cheerio');
@@ -13,7 +14,15 @@ var BandProcessor = function() {
     var genreLinks = $('a[href*=\'?b_where=s.style\']');
     var genres = [];
     genreLinks.each(function() {
-      genres.push($(this).text().trim());
+      var genreFullName = $(this).text().trim();
+      var href = $(this).attr('href');
+      var query = querystring.parse(href.split('?')[1]);
+      var genre = {
+        fullName: genreFullName,
+        main: query.b_what,
+        prefix: query.prefix
+      };
+      genres.push(genre);
     });
 
     self.emit('parse', {

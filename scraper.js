@@ -15,7 +15,9 @@ bandListProcessor.on('parse', function(band) {
 var bandProcessor = new BandProcessor();
 bandProcessor.on('parse', function(bandDetails) {
   util.puts(bandDetails.name);
-  util.puts(bandDetails.genres.join(', '));
+  bandDetails.genres.forEach(function(genre) {
+    util.puts('main: ' + genre.main + ', prefix: ' + genre.prefix);
+  });
 });
 
 var downloader = new Downloader();
