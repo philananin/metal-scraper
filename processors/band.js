@@ -14,14 +14,7 @@ var BandProcessor = function() {
     var genreLinks = $('a[href*=\'?b_where=s.style\']');
     var genres = [];
     genreLinks.each(function() {
-      var genreFullName = $(this).text().trim();
-      var href = $(this).attr('href');
-      var query = querystring.parse(href.split('?')[1]);
-      var genre = {
-        fullName: genreFullName,
-        main: query.b_what,
-        prefix: query.prefix
-      };
+      var genre = processGenre($(this));
       genres.push(genre);
     });
 
@@ -30,6 +23,17 @@ var BandProcessor = function() {
       genres: genres
     });
   };
+
+  function processGenre(genreElement) {
+    var genreFullName = genreElement.text().trim();
+    var href = genreElement.attr('href');
+    var query = querystring.parse(href.split('?')[1]);
+    return {
+      fullName: genreFullName,
+      main: query.b_what,
+      prefix: query.prefix
+    };
+  }
 };
 
 util.inherits(BandProcessor, EventEmitter);
