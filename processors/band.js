@@ -28,10 +28,13 @@ var BandProcessor = function() {
     var genreFullName = genreElement.text().trim();
     var href = genreElement.attr('href');
     var query = querystring.parse(href.split('?')[1]);
+    var years = genreElement.parent().prev().text().split('-');
     return {
       fullName: genreFullName,
       main: query.b_what,
-      prefix: query.prefix
+      prefix: query.prefix,
+      startYear: years[0],
+      endYear: years[1]
     };
   }
 };
