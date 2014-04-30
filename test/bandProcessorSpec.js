@@ -4,7 +4,7 @@ var expect = chai.expect;
 var BandProcessor = require('../processors/band.js');
 
 describe('BandProcessor', function() {
-  var html = fs.readFileSync('test/periphery.html');
+  var html = fs.readFileSync('test/periphery.html', {encoding: 'utf-8'});
   var bandProcessor;
 
   beforeEach(function() {
