@@ -14,9 +14,12 @@ bandListProcessor.on('parse', function(band) {
 
 var bandProcessor = new BandProcessor();
 bandProcessor.on('parse', function(bandDetails) {
-  util.puts(bandDetails.name);
+  util.puts('band: ' + bandDetails.name + ', id: ' + bandDetails.id);
   bandDetails.genres.forEach(function(genre) {
-    util.puts('main: ' + genre.main + ', prefix: ' + genre.prefix + ', ' + genre.startYear + '-' + genre.endYear);
+    util.puts('genre: ' + genre.main + ', prefix: ' + genre.prefix + ', ' + genre.startYear + '-' + genre.endYear);
+  });
+  bandDetails.albums.forEach(function(album) {
+    util.puts('album name: ' + album.name + ', id: ' + album.id + ', year: ' + album.year + ', rating: ' + album.rating);
   });
 });
 
