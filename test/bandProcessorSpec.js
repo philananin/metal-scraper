@@ -48,5 +48,39 @@ describe('BandProcessor', function() {
       });
       bandProcessor.process(html);
     });
+
+    it('extracts the correct albums', function(done) {
+      var expectedAlbums = [{
+        name: 'Periphery',
+        id: '45577',
+        year: '2010',
+        rating: '8.4',
+        isEP: false
+      }, {
+        name: 'Icarus EP',
+        id: '49837',
+        year: '2011',
+        rating: '7.5',
+        isEP: true
+      }, {
+        name: 'Periphery II: This Time It\'s Personal',
+        id: '54947',
+        year: '2012',
+        rating: '8.2',
+        isEP: false
+      }, {
+        name: 'Clear',
+        id: '74397',
+        year: '2014',
+        rating: '7.7',
+        isEP: true
+      }];
+
+      bandProcessor.on('parse', function(bandDetails) {
+        expect(bandDetails.albums).to.deep.equal(expectedAlbums);
+        done();
+      });
+      bandProcessor.process(html);
+    });
   });
 });

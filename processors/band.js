@@ -57,7 +57,8 @@ var BandProcessor = function() {
       name: albumName,
       id: query.album_id,
       year: flavor[0].trim(),
-      rating: flavor[1].trim()
+      rating: flavor[1].trim(),
+      isEP: albumElement.next().text().trim() === '[EP]'
     };
   }
 };
