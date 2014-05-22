@@ -26,6 +26,7 @@ var BandListProcessor = function() {
         id: bandId
       });
     });
+    self.emit('done');
   };
 };
 
