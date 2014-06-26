@@ -3,7 +3,7 @@ var chai = require('chai');
 var expect = chai.expect;
 var Album = require('../processors/album.js');
 
-describe('BandList', function() {
+describe('Album', function() {
   var html = fs.readFileSync('test/album.html', {encoding: 'utf-8'});
   var album;
 
