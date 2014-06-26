@@ -1,6 +1,7 @@
 var util = require('util');
 var BandListProcessor = require('./processors/bandlist.js');
 var BandProcessor = require('./processors/band.js');
+var AlbumProcessor = require('./processors/album.js');
 var Downloader = require('./utils/downloader.js');
 
 var done = false; // i don't want to spam the site for now, so just download one band
@@ -16,11 +17,20 @@ var bandProcessor = new BandProcessor();
 bandProcessor.on('parse', function(bandDetails) {
   util.puts('band: ' + bandDetails.name + ', id: ' + bandDetails.id);
   bandDetails.genres.forEach(function(genre) {
-    util.puts('genre: ' + genre.main + ', prefix: ' + genre.prefix + ', ' + genre.startYear + '-' + genre.endYear);
+    util.puts(util.format('genre: %s, prefix: %s, start: %s, end: %s',
+                          genre.main, genre.prefix, genre.startYear,
+                          genre.endYear));
   });
   bandDetails.albums.forEach(function(album) {
-    util.puts('album name: ' + album.name + ', id: ' + album.id + ', year: ' + album.year + ', rating: ' + album.rating);
+    downloader.downloadAlbum(album.id);
   });
+});
+
+var albumProcessor = new AlbumProcessor();
+albumProcessor.on('parse', function(album) {
+  util.puts(util.format('album name: %s, id: %s, rating: %s (%s votes)',
+                        album.name, album.id, album.rating.value,
+                        album.rating.votes));
 });
 
 var downloader = new Downloader();
@@ -29,6 +39,9 @@ downloader.on('bandListDownloaded', function(rawHtml) {
 });
 downloader.on('bandDownloaded', function(rawHtml) {
   bandProcessor.process(rawHtml);
+});
+downloader.on('albumDownloaded', function(rawHtml) {
+  albumProcessor.process(rawHtml);
 });
 
 var totalBandPages = 1; // todo
