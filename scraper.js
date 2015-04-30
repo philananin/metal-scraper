@@ -15,9 +15,9 @@ bandListProcessor.on('parse', function(band) {
 
 var bandProcessor = new BandProcessor();
 bandProcessor.on('parse', function(bandDetails) {
-  util.puts('band: ' + bandDetails.name + ', id: ' + bandDetails.id);
+  console.log('band: ' + bandDetails.name + ', id: ' + bandDetails.id);
   bandDetails.genres.forEach(function(genre) {
-    util.puts(util.format('genre: %s, prefix: %s, start: %s, end: %s',
+    console.log(util.format('genre: %s, prefix: %s, start: %s, end: %s',
                           genre.main, genre.prefix, genre.startYear,
                           genre.endYear));
   });
@@ -28,7 +28,7 @@ bandProcessor.on('parse', function(bandDetails) {
 
 var albumProcessor = new AlbumProcessor();
 albumProcessor.on('parse', function(album) {
-  util.puts(util.format('album name: %s, id: %s, rating: %s (%s votes)',
+  console.log(util.format('album name: %s, id: %s, rating: %s (%s votes)',
                         album.name, album.id, album.rating.value,
                         album.rating.votes));
 });
