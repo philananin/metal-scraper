@@ -6,20 +6,23 @@
   "author": "Phil Ananin",
   "scripts": {
     "scrape": "node scraper.js",
+    "setupdb": "node data/setup.js",
     "test": "mocha --reporter spec test",
     "autotest": "mocha --watch --reporter spec test"
   },
   "dependencies": {
-    "request": "latest",
+    "bluebird": "^2.9.25",
     "cheerio": "latest",
+    "request": "latest",
+    "rethinkdb": "latest",
     "underscore": "latest"
   },
   "devDependencies": {
     "chai": "latest",
     "grunt": "latest",
     "grunt-contrib-jshint": "latest",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-mocha-test": "^0.10.2",
+    "grunt-contrib-watch": "latest",
+    "grunt-mocha-test": "latest",
     "mocha": "latest"
   }
 }

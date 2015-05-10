@@ -26,7 +26,7 @@ module.exports = function(grunt) {
     },
 
     jshint: {
-      all: ['*.js', 'utils/*.js', 'processors/*.js', 'test/*.js']
+      all: ['*.js', 'utils/*.js', 'processors/*.js', 'test/*.js', 'data/*.js']
     }
   });
 
